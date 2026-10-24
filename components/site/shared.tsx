@@ -16,7 +16,8 @@ const socialLinks = [
   { label: 'تيك توك', href: '' },
   { label: 'واتساب', href: '' },
 ];
-export function Footer() {
+export function Footer({ minimal = false }: { minimal?: boolean }) {
+  if (minimal) return <footer className="site-footer project-footer container"><Link href="/" className="footer-name">عمر أيمن<Star /></Link></footer>;
   return <footer className="site-footer container"><div className="footer-top"><Link href="/" className="footer-name">عمر أيمن<Star /></Link><nav className="footer-socials" aria-label="حسابات التواصل">{socialLinks.map(({ label, href }) => href ? <a key={label} href={href} target="_blank" rel="noopener noreferrer">{label} <Arrow /></a> : <span key={label}>{label}</span>)}</nav></div><div className="footer-bottom"><span>© {new Date().getUTCFullYear()} عمر أيمن</span><Link href="/privacy">الخصوصية</Link></div></footer>;
 }
 export function PageIntro({ title, children }: { title: string; children: React.ReactNode }) {

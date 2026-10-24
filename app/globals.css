@@ -53,3 +53,41 @@
 @media(max-width:700px){.brief-options{gap:10px;margin-bottom:20px}.brief-option{font-size:14px;padding:10px;min-height:52px}.booking-wizard .financial-fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding-top:20px}.employees-field{grid-column:1/-1}.brief-upload{padding:16px}.brief-panel textarea{min-height:100px}.brief-panel .field label{font-size:14px}}
 .calendar-picker{padding:24px;border:1px solid var(--line);background:#eee9df}.calendar-meta{font-size:14px;margin-bottom:22px}.calendar-picker h3{font-size:20px;margin-block:18px 12px}.calendar-days{display:flex;gap:10px;overflow-x:auto;padding-block:3px 12px}.calendar-days button,.calendar-times button{border:1px solid #b9b8a8;border-radius:3px;background:#fcf9f2;color:var(--ink);min-height:48px;padding:12px 18px;font:inherit;font-size:14px;flex-shrink:0}.calendar-days button[aria-pressed='true'],.calendar-times button[aria-pressed='true']{background:var(--olive);border-color:var(--olive);color:#fff}.calendar-times{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.calendar-picker button:disabled{opacity:.5;cursor:not-allowed}.calendar-confirm{width:100%;margin-top:8px}.calendar-error{padding:15px;background:#f2e0d6;color:#793e2a}.calendar-error p{color:inherit}.calendar-empty{padding-block:25px}.booking-thanks{padding:30px;text-align:center;background:#e7e8dc;border:1px solid var(--line)}.thanks-check{display:grid;place-items:center;background:var(--olive);color:white;border-radius:50%;width:56px;height:56px;margin:0 auto 18px;font-size:30px}.booking-thanks h2{font-size:28px;margin-bottom:15px}.booking-thanks p{margin-bottom:10px}.booking-thanks small{display:block;overflow-wrap:anywhere;margin-block:15px;font-size:12px}.receipt-time{font-weight:600;color:var(--ink)}.booking-admin{padding-block:35px 65px;max-width:950px}.booking-admin h1{font-size:32px}.booking-admin h2{font-size:23px;margin-block:25px 15px}.admin-login{max-width:460px;margin-top:25px}.admin-login>p{margin-bottom:20px}.admin-settings{padding:0;border:0}.admin-checkbox-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.admin-check{display:flex;align-items:center;gap:9px;min-height:44px;padding:7px 12px;border:1px solid var(--line);background:#fbf8f2;font-size:15px}.admin-check input{accent-color:var(--olive);width:18px;height:18px}.admin-close-date{display:flex;gap:15px;align-items:center}.admin-close-date input{font:inherit;background:#fbf8f2;border:1px solid var(--line);padding:7px 12px}.closed-dates{display:flex;flex-wrap:wrap;gap:12px;margin-block:20px}.closed-dates button{font:inherit;font-size:13px;padding:5px 12px;border:1px solid var(--line);background:#eae5da}.admin-bookings{display:grid;grid-template-columns:1fr 1fr;gap:20px}.admin-bookings article{border:1px solid var(--line);padding:20px}.admin-bookings h3{font-size:19px}.admin-bookings p{font-size:14px}.admin-message{padding:14px 18px;background:#e7e8dc;margin-block:20px}.admin-logout{border:0;background:none;margin-block:15px}
 @media(max-width:700px){.calendar-picker{padding:17px}.calendar-times{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.calendar-meta{font-size:12px}.booking-thanks{padding:24px 16px}.booking-thanks h2{font-size:24px}.admin-checkbox-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-bookings{grid-template-columns:1fr}.admin-close-date{flex-wrap:wrap}.booking-admin h1{font-size:27px}}
+
+/* Center the booking actions and give the buttons a soft raised surface. */
+.paths-section .path-card{display:grid;place-items:center;min-height:156px;text-align:center}
+.paths-section .path-card h3{display:flex;justify-content:center;align-items:center;width:100%;margin:0}
+.paths-section .path-card .button{max-width:100%;border-radius:6px;box-shadow:0 9px 18px -9px rgba(42,49,35,.48),0 3px 0 rgba(42,49,35,.16);transform:translateY(-3px);transition:background .2s,transform .2s,box-shadow .2s}
+.paths-section .path-card .button:hover{transform:translateY(-6px);box-shadow:0 14px 24px -11px rgba(42,49,35,.5),0 3px 0 rgba(42,49,35,.14)}
+.paths-section .path-card .button:focus-visible{outline:3px solid var(--olive);outline-offset:5px}
+.paths-section .path-card .button:active{transform:translateY(0);box-shadow:0 4px 10px -6px rgba(42,49,35,.4)}
+@media(min-width:701px){.paths-section{padding-bottom:90px}.paths-section .path-card{padding:32px}}
+@media(max-width:700px){.paths-section .path-card{min-height:128px;padding:26px 20px}}
+@media(prefers-reduced-motion:reduce){.paths-section .path-card .button{transition:none}.paths-section .path-card .button:hover{transform:translateY(-3px)}}
+
+/* Keep project endings quiet, with one generously spaced signature. */
+.project-detail-page .editorial-block{border-bottom:0}
+.project-detail-page .inner-section{padding-bottom:24px}
+.site-footer.project-footer{display:flex;justify-content:center;border:0;padding-block:44px 56px}
+.project-footer .footer-name{gap:16px}
+@media(max-width:700px){.project-detail-page .inner-section{padding-bottom:16px}.site-footer.project-footer{padding-block:36px 48px}.project-footer .footer-name{font-size:28px;gap:14px}}
+
+.paths-section .path-card .button:disabled{cursor:not-allowed;opacity:.8;transform:none;box-shadow:0 5px 12px -8px rgba(42,49,35,.4)}
+.consultation-coming-soon{min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding-block:64px;text-align:center}
+.consultation-coming-soon h1{font-size:clamp(32px,5vw,56px)}
+
+/* Booking choices retain their space while responding to scroll direction. */
+.booking-invitation.paths-section{padding-block:30px 72px}
+.booking-intro{text-align:center;margin-bottom:12px}
+.booking-intro h2{font-size:clamp(28px,3.8vw,44px);line-height:1.6}
+.booking-intro p{font-size:26px;color:var(--olive);font-weight:500;margin-top:10px}
+.booking-callouts{display:grid;grid-template-columns:1fr 1fr;gap:25px;opacity:1;visibility:visible;transform:translateY(0);transition:opacity .3s,transform .35s,visibility .35s}
+.booking-callouts[data-visible="false"]{opacity:0;visibility:hidden;transform:translateY(-18px);pointer-events:none}
+.booking-choice{display:flex;flex-direction:column;align-items:center;min-width:0}
+.booking-choice-arrow{display:block;width:160px;height:100px;color:var(--rust);margin-bottom:8px}
+.booking-choice:nth-child(2) .booking-choice-arrow{transform:scaleX(-1)}
+.booking-choice-arrow path{stroke-dasharray:1;stroke-dashoffset:0;transition:stroke-dashoffset .45s}
+.booking-callouts[data-visible="false"] .booking-choice-arrow path{stroke-dashoffset:1}
+.booking-invitation .path-card{width:100%;border-radius:8px;box-shadow:0 12px 28px -22px rgba(42,49,35,.45)}
+@media(max-width:700px){.booking-invitation.paths-section{padding-block:24px 50px}.booking-intro h2{font-size:28px}.booking-intro p{font-size:23px}.booking-callouts{grid-template-columns:1fr;gap:18px}.booking-choice-arrow{width:128px;height:70px;margin-bottom:6px}.booking-invitation .path-card{min-height:116px}.journey .journey-stop .journey-photo{width:86%;max-width:300px}}
+@media(prefers-reduced-motion:reduce){.booking-callouts,.booking-choice-arrow path{transition:none}.booking-callouts[data-visible="false"]{transform:none}}

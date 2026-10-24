@@ -81,7 +81,7 @@ export function IntakeForm({ kind }: { kind: IntakeKind; showNotice?: boolean })
       </fieldset>
       <div className="form-grid financial-fields">
         <div className="field"><label htmlFor={`${kind}-revenue`}>الإيرادات الشهرية</label><select id={`${kind}-revenue`} name="revenue" defaultValue="" required><option value="" disabled>اختار حجم الإيرادات</option>{revenueOptions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select><small>بالجنيه المصري</small></div>
-        <div className="field"><label htmlFor={`${kind}-budget`}>ميزانية المشروع</label><select id={`${kind}-budget`} name="budget" defaultValue="" required><option value="" disabled>اختار الميزانية المتاحة</option>{budgetOptions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select><small>بالجنيه المصري</small></div>
+        {kind === 'intro' && <div className="field"><label htmlFor={`${kind}-budget`}>ميزانية المشروع</label><select id={`${kind}-budget`} name="budget" defaultValue="" required><option value="" disabled>اختار الميزانية المتاحة</option>{budgetOptions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select><small>بالجنيه المصري</small></div>}
         <div className="field employees-field"><label htmlFor={`${kind}-employees`}>عدد الموظفين</label><select id={`${kind}-employees`} name="employees" defaultValue="" required><option value="" disabled>اختار حجم الفريق</option><option value="solo">أنا لوحدي</option><option value="2-4">من 2 إلى 4</option><option value="4-8">من 4 إلى 8</option><option value="8-plus">أكثر من 8</option></select></div>
       </div>
     </fieldset>

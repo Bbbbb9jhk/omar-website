@@ -61,8 +61,9 @@ Deno.serve(async (req: Request) => {
       ['business',text(form,'business',3000)],['problemsAndTools',text(form,'problemsAndTools',5000)],['attempts',text(form,'attempts',3000)],['help',text(form,'help',3000)],
       ['revenue',text(form,'revenue',30)],['budget',text(form,'budget',30)],['employees',text(form,'employees',20)],['kind',text(form,'kind',10)],['mode',text(form,'mode',10)],
     ]);
+    if (data.kind === 'audit') delete data.budget;
     if (data.name.length < 2 || !data.businessName || !/^[+0-9 .\-]{7,30}$/.test(data.contact) || data.contact.replace(/\D/g,'').length > 15
-      || !['intro','audit'].includes(data.kind) || !['manual','brief'].includes(data.mode) || !revenue.includes(data.revenue) || !budgets.includes(data.budget) || !employeeCounts.includes(data.employees)
+      || !['intro','audit'].includes(data.kind) || !['manual','brief'].includes(data.mode) || !revenue.includes(data.revenue) || (data.kind === 'intro' && !budgets.includes(data.budget)) || !employeeCounts.includes(data.employees)
       || (data.mode === 'manual' && (!data.business || !data.problemsAndTools || !data.attempts))) return json({ error: 'كمّل البيانات المطلوبة بشكل صحيح.' }, 400);
     if (data.website) { try { if (!['https:','http:'].includes(new URL(data.website).protocol)) throw 0; } catch { return json({ error: 'راجع لينك الويب سايت.' },400); } }
     const slot = text(form, 'slot', 40), token = text(form, 'token', 36);

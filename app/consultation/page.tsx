@@ -1,7 +1,6 @@
 import type { Metadata } from '@/lib/meta';
-
-import { IntakeForm } from '@/components/site/intake-form';
-export const metadata: Metadata = { title: 'احجز استشارة', description: 'احجز استشارة: ابدأ ببياناتك وبيانات البزنس، ثم حدد الإيرادات والميزانية.' };
+import Link from '@/lib/navigation';
+export const metadata: Metadata = { title: 'الاستشارات قريبًا', description: 'حجز الاستشارات هيفتح قريبًا.' };
 export default function Consultation() {
-  return <div className="container booking-direct"><h1 className="visually-hidden">احجز استشارة</h1><IntakeForm kind="audit" /></div>;
+  return <section className="container consultation-coming-soon"><h1>الاستشارات قريبًا</h1><p>هنفتح حجز الاستشارات قريبًا.</p><Link href="/" className="text-link">ارجع للرئيسية ←</Link></section>;
 }
