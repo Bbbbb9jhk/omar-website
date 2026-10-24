@@ -33,7 +33,7 @@ export function BookingInvitation() {
     <div className="booking-callouts" ref={actionsRef} data-visible={visible} aria-hidden={!visible} onFocusCapture={() => setVisible(true)}>
       {['intro', 'audit'].map(kind => <div className="booking-choice" key={kind}>
         <svg className="booking-choice-arrow" viewBox="0 0 160 100" fill="none" aria-hidden="true"><path pathLength="1" d="M20 8C102 5 137 30 91 86M91 86l-2-19m2 19 19-6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-        <div className={`path-card${kind === 'audit' ? ' path-audit' : ''}`}>{kind === 'intro' ? <Link href="/book" className="button">احجز مكالمة <Arrow /></Link> : <button type="button" className="button" disabled>احجز استشارة · قريبًا</button>}</div>
+        <div className={`path-card${kind === 'audit' ? ' path-audit' : ''}`}>{kind === 'intro' ? <Link href="/book" className="button">احجز مكالمة <Arrow /></Link> : <button type="button" className="button consultation-soon-button" disabled><span>احجز استشارة</span><small>قريبًا</small></button>}</div>
       </div>)}
     </div>
   </section>;
