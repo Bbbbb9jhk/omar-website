@@ -38,7 +38,7 @@ test('no video block, embedded media, or external font requests ship', async () 
 });
 test('booking integration is ready and forms use client-side confirmation', async () => {
   assert.equal(intakeAvailability.available, true);
-  for (const page of ['book', 'consultation']) {
+  for (const page of ['book']) {
     const html = await readFile(`dist/${page}/index.html`, 'utf8');
     assert.match(html, /خطوات الحجز/);
     assert.doesNotMatch(html, /<form[^>]*action=/);
@@ -54,7 +54,7 @@ test('PDF rejects a renamed non-PDF, incorrect type and oversized input', async 
 });
 
 test('booking wizard collects business and contact details before qualification', async () => {
-  for (const page of ['book', 'consultation']) {
+  for (const page of ['book']) {
     const html = await readFile(`dist/${page}/index.html`, 'utf8');
     for (const name of ['businessName', 'name', 'contact']) {
       const input = html.match(new RegExp(`<input[^>]*name="${name}"[^>]*>`))?.[0]; assert.ok(input, name); assert.match(input, /required=""/);
@@ -75,7 +75,7 @@ test('booking wizard collects business and contact details before qualification'
 });
 
 test('business details support manual answers or an unrestricted brief attachment', async () => {
-  for (const page of ['book', 'consultation']) {
+  for (const page of ['book']) {
     const html = await readFile(`dist/${page}/index.html`, 'utf8');
     for (const name of ['business', 'problemsAndTools', 'attempts']) {
       const field = html.match(new RegExp(`<textarea[^>]*name="${name}"[^>]*>`))?.[0];
@@ -88,5 +88,35 @@ test('business details support manual answers or an unrestricted brief attachmen
     for (const value of ['solo', '2-4', '4-8', '8-plus']) assert.ok(html.includes(`value="${value}"`));
     assert.match(html, /أجاوب على الأسئلة يدويًا/); assert.match(html, /عندي بريف جاهز/);
     assert.doesNotMatch(html.match(/<ol class="booking-progress"[\s\S]*?<\/ol>/)[0], /بياناتك وبيانات البزنس/);
+  }
+});
+
+test('homepage publishes real social links and both booking locations', async () => {
+  const html = await readFile('dist/index.html', 'utf8');
+  for (const href of ['https://www.instagram.com/omarayman.tech/', 'https://www.tiktok.com/@omarayman.tech', 'https://wa.me/201050454132']) {
+    assert.ok(html.includes(`href="${href}"`), `missing clickable social link: ${href}`);
+  }
+  const approach = html.indexOf('id="approach-title"');
+  const middle = html.indexOf('class="booking-between');
+  const problems = html.indexOf('id="problems-title"');
+  const invitation = html.indexOf('id="booking-invitation-title"');
+  assert.ok(approach < middle && middle < problems && problems < invitation);
+  const middleActions = html.slice(middle, problems);
+  assert.match(middleActions, /href="\/book"/);
+  assert.match(middleActions, /<button[^>]*disabled=""/);
+  assert.doesNotMatch(html, /دي طريقة شغلي/);
+});
+
+test('consultation is closed and booking pages omit the footer', async () => {
+  const consultation = await readFile('dist/consultation/index.html', 'utf8');
+  assert.match(consultation, /الاستشارات قريبًا/);
+  assert.doesNotMatch(consultation, /<form\b/);
+  for (const page of ['book', 'consultation']) {
+    assert.doesNotMatch(await readFile(`dist/${page}/index.html`, 'utf8'), /<footer\b/);
+  }
+  for (const slug of ['lamsa', 'trends', 'twenzer']) {
+    const html = await readFile(`dist/work/${slug}/index.html`, 'utf8');
+    assert.match(html, /project-footer/);
+    assert.doesNotMatch(html, /footer-socials|next-project|ارجع لكل المشاريع/);
   }
 });
