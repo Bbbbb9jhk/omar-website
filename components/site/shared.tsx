@@ -12,9 +12,9 @@ export function WorkTogether() {
   return null;
 }
 const socialLinks = [
-  { label: 'إنستجرام', href: '' },
-  { label: 'تيك توك', href: '' },
-  { label: 'واتساب', href: '' },
+  { label: 'إنستجرام', href: 'https://www.instagram.com/omarayman.tech/' },
+  { label: 'تيك توك', href: 'https://www.tiktok.com/@omarayman.tech' },
+  { label: 'واتساب', href: 'https://wa.me/201050454132' },
 ];
 export function Footer({ minimal = false }: { minimal?: boolean }) {
   if (minimal) return <footer className="site-footer project-footer container"><Link href="/" className="footer-name">عمر أيمن<Star /></Link></footer>;
