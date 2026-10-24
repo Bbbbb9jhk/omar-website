@@ -1,0 +1,10 @@
+import { Header } from '@/components/site/header';
+import { Footer } from '@/components/site/shared';
+import { siteOrigin } from '@/lib/content';
+export default function RootLayout({ children, path, title, description }: { children: React.ReactNode; path: string; title: string; description: string }) {
+  const fullTitle = `${title} | عمر أيمن`;
+  const canonical = `${siteOrigin}${path === '/' ? '' : path}`;
+  const isProjectPage = path.startsWith('/work/');
+  const isBookingPage = path === '/book' || path === '/consultation';
+  return <html lang="ar" dir="rtl"><head><meta charSet="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>{fullTitle}</title><meta name="description" content={description} /><meta name="robots" content="noindex,nofollow" /><link rel="canonical" href={canonical} /><meta property="og:title" content={fullTitle} /><meta property="og:description" content={description} /><meta property="og:type" content="website" /><meta property="og:locale" content="ar_EG" /><meta property="og:url" content={canonical} /><meta name="twitter:card" content="summary" /><meta name="theme-color" content="#f5f0e8" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" /><link rel="stylesheet" href="/fonts/fonts.css" /><link rel="stylesheet" href="/assets/site.css" /></head><body><a className="skip-link" href="#main-content">انتقل للمحتوى</a><Header /><main id="main-content">{children}</main>{!isBookingPage && <Footer minimal={isProjectPage} />}<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@graph': [{ '@type': 'Person', name: 'عمر أيمن', alternateName: 'Omar Ayman', url: siteOrigin }, { '@type': 'WebSite', name: 'عمر أيمن', url: siteOrigin, inLanguage: 'ar-EG' }] }) }} /><script type="module" src="/assets/app.js" /></body></html>;
+}
