@@ -1,0 +1,4 @@
+[functions.omar-booking]
+# Public availability/submission uses a publishable API key. Admin requests
+# additionally verify a Supabase Auth JWT and active owner membership.
+verify_jwt = false
