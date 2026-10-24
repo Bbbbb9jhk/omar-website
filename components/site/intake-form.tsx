@@ -40,7 +40,7 @@ export function IntakeForm({ kind }: { kind: IntakeKind; showNotice?: boolean })
   }
   function getSubmission() {
     const data = new FormData();
-    for (const name of ['name','businessName','contact','instagram','website','revenue','budget','employees','business','problemsAndTools','attempts','help','companyWebsiteCheck']) {
+    for (const name of ['name','businessName','contact','instagram','website','revenue','budget','employees','business','problemsAndTools','attempts','help']) {
       const field = formRef.current?.querySelector<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(`[name="${name}"]`);
       if (field && (briefMode === 'manual' || !['business','problemsAndTools','attempts','help'].includes(name))) data.set(name, field.value);
     }
@@ -51,7 +51,6 @@ export function IntakeForm({ kind }: { kind: IntakeKind; showNotice?: boolean })
   return <form className="intake-form booking-wizard" ref={formRef} aria-label={kind === 'intro' ? 'حجز مكالمة' : 'حجز استشارة'} onSubmit={continueForm}>
     <div className="booking-topline"><Link href="/" className="back-link">→ الرئيسية</Link><ol className="booking-progress" aria-label="خطوات الحجز">{stepTitles.map((title, index) => <li key={title} aria-current={step === index + 1 ? 'step' : undefined} className={step > index + 1 ? 'is-complete' : ''}><span aria-hidden="true">{index + 1}</span>{title}</li>)}</ol></div>
     <h2 className={step === 1 || complete ? 'visually-hidden' : 'booking-step-title'} ref={titleRef} tabIndex={-1}>{stepTitles[step - 1]}</h2>
-    <div className="visually-hidden" aria-hidden="true"><label>اترك الحقل ده فاضي<input name="companyWebsiteCheck" tabIndex={-1} autoComplete="off" /></label></div>
     <fieldset className="booking-step" hidden={step !== 1} disabled={step !== 1}>
       <legend className="visually-hidden">بيانات العميل</legend>
       <div className="form-grid first-step-grid">
